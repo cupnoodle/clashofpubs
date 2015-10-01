@@ -1,0 +1,177 @@
+
+	body {
+		background: #000;
+		font-family: Open Sans,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	}
+
+	p, footer, h1, label {
+		color: #fff;
+	}
+
+	h1 {
+		text-align: center;
+	}
+
+	h1#logo {
+		height: 105px;
+		width: 182px;
+		margin: 25px auto; 
+		background-image: url('logo.jpg');
+	}
+
+	h1#insignia {
+		height: 52px;
+		width: 53px; 
+		margin: 50px auto; 
+		background-image: url('insignia.jpg');
+	}
+
+	h1#logo span, h1#insignia span {
+		display: none;
+	}
+
+	h1#about {
+		height: 48px;
+		width: 577px;
+		margin: -78px auto 30px auto;
+		background-image: url('about.png');
+	}
+
+	h1#register {
+		height: 46px;
+		width: 705px;
+		margin: -76px auto 30px auto;
+		background-image: url('register.png');
+	}
+
+	.form a, .form a:hover {
+		color: #fff;
+		font-weight: bold;
+	}
+
+	div.col-md-12.team-head {
+		text-align: center;
+		color: #fff;
+		background: #333333;
+		border: 1px solid #000;
+	}
+
+	div.col-md-12.team-head span {
+		font-weight: bold;
+	}
+
+	div.team {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-flex-align: center;
+		-ms-flex-align: center;
+		-webkit-align-items: center;
+		align-items: center;
+		min-width: 140px;
+		margin-top: 5px;
+		border: 1px solid #000;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+		color: #fff;
+		background: #17181b;
+	}
+
+	div.team span.squarebox {
+		height: 50px;
+		width: 50px;
+		margin: 0 15px 0 -14px;
+		border: 2px solid #c86212;
+		border-radius: 5px;
+		background: url('team50.jpg') no-repeat;
+	}
+
+	div.team-col {
+		margin: 5px 5px;
+	}
+
+	/*white color link for team */
+	div.team a{
+		color: #FFF;
+	}
+
+	.form {
+		padding: 30px 80px;
+		border-left: 4px solid #00efa5;
+		border-right: 4px solid #f00851;
+	}
+
+	.video {
+		text-align: center;
+	}
+
+	.video iframe {
+		border-left: 4px solid #00efa5;
+		border-right: 4px solid #f00851;
+	}
+
+	/* YouTube Responsive CSS for HubSpot */
+	.hs-responsive-embed-youtube {
+		position: relative;
+		padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+		padding-top: 25px;
+		height: 0;
+	}
+
+	.hs-responsive-embed-youtube iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%!important;
+		height: 100%!important;
+	}
+
+	.header {
+		margin: 50px auto;
+		padding-bottom: 50px;
+	}
+
+	footer {
+		margin: 50px 0px 25px 0px;
+	}
+
+	.nav-wrap { 
+		margin: 50px auto;
+		border-bottom: 2px solid #1c1c1c; 
+	}
+
+	#navigation { 
+		margin: 0 10%; 
+		list-style: none; 
+		position: relative; 
+		width: 700px; 
+	}
+
+	#navigation li { 
+		display: inline-block;
+		margin-right: 70px;
+	}
+
+	#navigation li a { 
+		color: #fff; 
+		font-size: 14px; 
+		display: block; 
+		float: left; 
+		text-decoration: none; 
+		text-transform: uppercase; 
+	}
+
+	#navigation li a:hover { 
+		color: white; 
+	}
+
+	#magic-line { 
+		position: absolute; 
+		bottom: -2px; 
+		left: 0; 
+		width: 100px; 
+		height: 2px; 
+		background: #9e9e9e; 
+	}

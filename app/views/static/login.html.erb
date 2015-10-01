@@ -1,0 +1,35 @@
+  <% content_for :menu do %>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="teams.html">TEAMS</a></li>
+            <li><a href="schedule.html">SCHEDULE</a></li>
+            <li class="current_page_item"><a href="register.html">REGISTER</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+  <% end %>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <h1 id="login">Login</h1>
+        <div class="form">
+          <form>
+            <div class="form-group">
+              <label for="inputName1">Player Name</label>
+              <input type="text" class="form-control" id="inputName1" placeholder="Enter name here">
+            </div>
+            <div class="form-group">
+              <label for="inputPassword1">Password</label>
+              <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+            </div><br>
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Remember me
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-default">Login</button><br><br>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

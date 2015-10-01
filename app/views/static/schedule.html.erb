@@ -1,0 +1,246 @@
+  <% content_for :menu do %>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="teams.html">TEAMS</a></li>
+            <li class="current_page_item"><a href="schedule.html">SCHEDULE</a></li>
+            <li><a href="register.html">REGISTER</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+  <% end %>
+
+  <% content_for :datepicker do %>
+    <!-- Datepicker START -->
+    <script>
+      $(function() {
+
+        var i;
+
+        for(i = 1; i <= 30; i++)
+        {
+          $( "#datepicker" + i ).datetimepicker({
+            controlType: 'select',
+            oneLine: true,
+            timeFormat: 'hh:mm tt z'
+          });
+        }
+      });
+    </script>
+    <!-- Datepicker END -->
+  <% end %>
+
+  <div class="container">
+  <div class="row">
+  <div class="col-md-12">
+  <main id="tournament">
+    <ul class="round round-1">
+      <!-- Round 1 - 32 Teams -->
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> Lousville</li>
+      <li class="game game-spacer"><input type="text" id="datepicker1"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> NC A&T</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> Colo St</li>
+      <li class="game game-spacer"><input type="text" id="datepicker2"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> Missouri</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top "><span class="team-logo"></span> Oklahoma St</li>
+      <li class="game game-spacer"><input type="text" id="datepicker3"></li>
+      <li class="game game-bottom winner"><span class="team-logo"></span> Oregon</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> Saint Louis</li>
+      <li class="game game-spacer"><input type="text" id="datepicker4"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> New Mexico St</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> Memphis</li>
+      <li class="game game-spacer"><input type="text" id="datepicker5"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> St Mary's</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> Mich St</li>
+      <li class="game game-spacer"><input type="text" id="datepicker6"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> Valparaiso</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> Creighton</li>
+      <li class="game game-spacer"><input type="text" id="datepicker7"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> Cincinnati</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> Duke</li>
+      <li class="game game-spacer"><input type="text" id="datepicker8"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> Albany</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> Lousville</li>
+      <li class="game game-spacer"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> NC A&T</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> Colo St</li>
+      <li class="game game-spacer"><input type="text" id="datepicker9"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> Missouri</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top "><span class="team-logo"></span> Oklahoma St</li>
+      <li class="game game-spacer"><input type="text" id="datepicker10"></li>
+      <li class="game game-bottom winner"><span class="team-logo"></span> Oregon</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> Saint Louis</li>
+      <li class="game game-spacer"><input type="text" id="datepicker11"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> New Mexico St</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> Memphis</li>
+      <li class="game game-spacer"><input type="text" id="datepicker12"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> St Mary's</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> Mich St</li>
+      <li class="game game-spacer"><input type="text" id="datepicker13"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> Valparaiso</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> Creighton</li>
+      <li class="game game-spacer"><input type="text" id="datepicker14"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> Cincinnati</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> Duke</li>
+      <li class="game game-spacer"><input type="text" id="datepicker15"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> Albany</li>
+
+      <li class="spacer">&nbsp;</li>
+    </ul>
+    <ul class="round round-2">
+      <!-- Round 2 - 16 Teams -->
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> Lousville</li>
+      <li class="game game-spacer"><input type="text" id="datepicker16"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> NC A&T</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> Colo St</li>
+      <li class="game game-spacer"><input type="text" id="datepicker17"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> Missouri</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top "><span class="team-logo"></span> Oklahoma St</li>
+      <li class="game game-spacer"><input type="text" id="datepicker18"></li>
+      <li class="game game-bottom winner"><span class="team-logo"></span> Oregon</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> Saint Louis</li>
+      <li class="game game-spacer"><input type="text" id="datepicker19"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> New Mexico St</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> Memphis</li>
+      <li class="game game-spacer"><input type="text" id="datepicker20"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> St Mary's</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> Mich St</li>
+      <li class="game game-spacer"><input type="text" id="datepicker21"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> Valparaiso</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> Creighton</li>
+      <li class="game game-spacer"><input type="text" id="datepicker22"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> Cincinnati</li>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> Duke</li>
+      <li class="game game-spacer"><input type="text" id="datepicker23"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> Albany</li>
+
+      <li class="spacer">&nbsp;</li>
+    </ul>
+    <ul class="round round-3">
+      <li class="spacer">&nbsp;</li>
+
+      <li class="game game-top winner"><span class="team-logo"></span> Lousville</li>
+      <li class="game game-spacer"><input type="text" id="datepicker24"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> Colo St</li>
+
+      <li class="spacer">&nbsp;</li>
+
+      <li class="game game-top winner"><span class="team-logo"></span> Oregon</li>
+      <li class="game game-spacer"><input type="text" id="datepicker25"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> Saint Louis</li>
+
+      <li class="spacer">&nbsp;</li>
+
+      <li class="game game-top "><span class="team-logo"></span> Memphis</li>
+      <li class="game game-spacer"><input type="text" id="datepicker26"></li>
+      <li class="game game-bottom winner"><span class="team-logo"></span> Mich St</li>
+
+      <li class="spacer">&nbsp;</li>
+
+      <li class="game game-top "><span class="team-logo"></span> Creighton</li>
+      <li class="game game-spacer"><input type="text" id="datepicker27"></li>
+      <li class="game game-bottom winner"><span class="team-logo"></span> Duke</li>
+
+      <li class="spacer">&nbsp;</li>
+    </ul>
+    <ul class="round round-4">
+      <li class="spacer">&nbsp;</li>
+
+      <li class="game game-top winner"><span class="team-logo"></span> Lousville</li>
+      <li class="game game-spacer"><input type="text" id="datepicker28"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> Oregon</li>
+
+      <li class="spacer">&nbsp;</li>
+
+      <li class="game game-top "><span class="team-logo"></span> Mich St</li>
+      <li class="game game-spacer"><input type="text" id="datepicker29"></li>
+      <li class="game game-bottom winner"><span class="team-logo"></span> Duke</li>
+
+      <li class="spacer">&nbsp;</li>
+    </ul>
+    <ul class="round round-5">
+      <li class="spacer">&nbsp;</li>
+
+      <li class="game game-top winner"><span class="team-logo"></span> Lousville</li>
+      <li class="game game-spacer"><input type="text" id="datepicker30"></li>
+      <li class="game game-bottom "><span class="team-logo"></span> Duke</li>
+
+      <li class="spacer">&nbsp;</li>
+    </ul> 
+    <ul class="round round-6">
+      <li class="spacer">&nbsp;</li>
+
+      <li class="game game-top winner"><span class="team-logo"></span> Lousville</li>
+
+      <li class="spacer">&nbsp;</li>
+    </ul> 
+  </main>
+  </div>
+  </div>
+  </div>
