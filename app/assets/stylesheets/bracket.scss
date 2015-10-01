@@ -63,7 +63,7 @@ li.game span.team-logo {
   margin: 0 10px;
   border: 2px solid #c86212;
   border-radius: 3px;
-  background: url('team.jpg') no-repeat;
+  background: asset-url('team.jpg') no-repeat;
 }
 
 li.game-top, li.game-bottom{
@@ -98,7 +98,7 @@ li.game-spacer{
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  background: url('picker-bg.jpg') repeat-y center;
+  background: asset-url('picker-bg.jpg') repeat-y center;
 }
 
 li.game-bottom{ 

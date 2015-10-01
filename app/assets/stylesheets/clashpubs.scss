@@ -16,14 +16,14 @@
 		height: 105px;
 		width: 182px;
 		margin: 25px auto; 
-		background-image: url('logo.jpg');
+		background-image: asset-url('logo.jpg');
 	}
 
 	h1#insignia {
 		height: 52px;
 		width: 53px; 
 		margin: 50px auto; 
-		background-image: url('insignia.jpg');
+		background-image: asset-url('insignia.jpg');
 	}
 
 	h1#logo span, h1#insignia span {
@@ -34,14 +34,14 @@
 		height: 48px;
 		width: 577px;
 		margin: -78px auto 30px auto;
-		background-image: url('about.png');
+		background-image: asset-url('about.png');
 	}
 
 	h1#register {
 		height: 46px;
 		width: 705px;
 		margin: -76px auto 30px auto;
-		background-image: url('register.png');
+		background-image: asset-url('register.png');
 	}
 
 	.form a, .form a:hover {
@@ -85,7 +85,7 @@
 		margin: 0 15px 0 -14px;
 		border: 2px solid #c86212;
 		border-radius: 5px;
-		background: url('team50.jpg') no-repeat;
+		background: asset-url('team50.jpg') no-repeat;
 	}
 
 	div.team-col {
