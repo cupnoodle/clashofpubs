@@ -1,0 +1,63 @@
+  <% content_for :menu do %>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="teams.html">TEAMS</a></li>
+            <li><a href="schedule.html">SCHEDULE</a></li>
+            <li class="current_page_item"><a href="register.html">REGISTER</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+  <% end %>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-12">
+          <h1 id="register"></h1>
+        <div class="form">
+
+          <% if @player.errors.any? %>
+            <div class="error_box">
+              <span> <strong> One or more errors have occured : </strong> </span><br>
+            <ul>
+              <!-- prevent redundant error messages -->
+              <% @temp = "" %>
+              <% @player.errors.full_messages.each do |message| %>
+                <% if @temp != message.split.first %>
+                  <li><%= message %></li>
+                <% end %>
+                <% @temp = message.split.first %>
+              <% end %>
+            </ul>
+            </div>
+          <% end %>
+
+          <%= form_for(:player, :url => {:action => "create"}) do |f| %>
+            <div class="form-group">
+              <label for="name">Player Name</label>
+              <%= f.text_field :name, placeholder: "Enter name here", class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <label for="steam_id">Steam ID</label>
+              <%= f.text_field :steam_id, placeholder: "Enter Steam ID here", class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <%= f.text_field :email, placeholder: "abc@example.com", class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <label for="team_name">Team Name</label>
+              <%= f.text_field :team_name, placeholder: "Enter team name here", class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <label for="mmr">MMR</label>
+              <%= f.text_field :mmr, placeholder: "Enter MMR here", class: "form-control" %>
+            </div><br>
+            <%= f.submit "Submit", class: "btn btn-default" %> <br><br>
+            <p class="help-block">Already got an account? <%= link_to "Sign in here.", :controller => :players, :action => :login %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

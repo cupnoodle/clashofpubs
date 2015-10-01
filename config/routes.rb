@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   get 'about' => 'static#about'
   get 'teams' => 'static#teams'
   get 'schedule' => 'static#schedule'
-  get 'register' => 'static#register'
-  get 'login' => 'static#login'
+  get 'register' => 'players#new'
+  post 'player/create' => 'players#create'
+  get 'login' => 'players#login'
+  post 'login' => 'players#attempt_login'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

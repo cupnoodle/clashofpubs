@@ -16,6 +16,7 @@ class StaticController < ApplicationController
 
   #register page
   def register
+    @player = Player.new
   end
 
   #about page
