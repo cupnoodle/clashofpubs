@@ -2,7 +2,14 @@ class PlayersController < ApplicationController
 
   layout "default"
 
+  before_filter :set_selected_menu
+
   def new
+    #check if already logged in
+    if session[:player_id]
+      redirect_to(:controller => 'static', :action => 'index')
+    end
+
     @player = Player.new
   end
 
@@ -21,6 +28,11 @@ class PlayersController < ApplicationController
   end
 
   def login
+    #check if already logged in
+    if session[:player_id]
+      redirect_to(:controller => 'static', :action => 'index')
+    end
+    
   end
 
   def attempt_login
@@ -46,6 +58,15 @@ class PlayersController < ApplicationController
 
   end
 
+  def logout
+    # mark user as logged out
+    session[:player_id] = nil
+    session[:name] = nil
+    reset_session
+    flash[:notice] = "Logged out"
+    redirect_to(:action => "login")
+  end
+
   private
 
   def player_params
@@ -63,5 +84,9 @@ class PlayersController < ApplicationController
     " MMR : #{params[:player][:mmr]} \n" + " Password : #{params[:player][:password]} \n\n " + 
     " Please keep this email as your password will be encrypted in our server and might not be retrieved in case you forgot it in the future. \n\n" +
     " Please do not reply to this email, this email is sent by a mail bot from Clash Of Pubs."
+  end
+
+  def set_selected_menu
+    @is_register_page = 'class=current_page_item'
   end
 end

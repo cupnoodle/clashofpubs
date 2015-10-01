@@ -27,7 +27,17 @@
         <!-- Navigation -->
         <div class="nav-wrap">
           <ul class="group" id="navigation">
-            <%= yield :menu %>
+            <li <%= @is_index_page %> ><a href="index.html">HOME</a></li>
+            <li <%= @is_team_page %> ><a href="teams.html">TEAMS</a></li>
+            <li <%= @is_schedule_page %> ><a href="schedule.html">SCHEDULE</a></li>
+            <li <%= @is_register_page %> >
+              <% if session[:player_id] %>
+                <a href="logout.html">LOGOUT</a>
+              <% else %>
+                <a href="register.html">REGISTER</a>
+              <% end %>
+            </li>
+            <li <%= @is_about_page %> ><a href="about.html">ABOUT</a></li>
           </ul>
         </div>
       </div>

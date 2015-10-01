@@ -4,14 +4,17 @@ class StaticController < ApplicationController
 
   #home page
   def index
+    @is_index_page = 'class=current_page_item'
   end
 
   #team page
   def teams
+    @is_team_page = 'class=current_page_item'
   end
 
   #schedule page
   def schedule
+    @is_schedule_page = 'class=current_page_item'
   end
 
   #register page
@@ -21,5 +24,6 @@ class StaticController < ApplicationController
 
   #about page
   def about
+    @is_about_page = 'class=current_page_item'
   end
 end
