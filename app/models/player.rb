@@ -14,4 +14,7 @@ class Player < ActiveRecord::Base
 
   validates :team_name, :presence => true, :length => { :maximum => 64 }, :uniqueness => true
   validates :steam_id, :presence => true, :length => { :maximum => 64 }, :uniqueness => true
+
+  #team order is between 1 and 32
+  validates :team_order, inclusion: 1..32
 end

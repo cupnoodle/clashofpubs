@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+(1..32).each do |x|
+  #Create 32 dummy matching from id 1 to id 32 (auto increment in database)
+  Matching.create
+end

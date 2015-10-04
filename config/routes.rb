@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get 'schedule' => 'static#schedule'
   get 'register' => 'players#new'
   post 'player/create' => 'players#create'
+
+  get 'player/full' => 'players#full'
+  
   get 'login' => 'players#login'
   post 'login' => 'players#attempt_login'
   get 'logout' => 'players#logout'

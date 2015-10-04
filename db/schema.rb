@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151001010416) do
+ActiveRecord::Schema.define(version: 20151003181102) do
+
+  create_table "matchings", force: :cascade do |t|
+    t.integer  "top_player",      limit: 4
+    t.integer  "bottom_player",   limit: 4
+    t.datetime "top_datetime"
+    t.datetime "bottom_datetime"
+    t.datetime "agreed_datetime"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "players", force: :cascade do |t|
     t.string   "name",            limit: 64,  null: false
@@ -22,6 +32,8 @@ ActiveRecord::Schema.define(version: 20151001010416) do
     t.string   "password_digest", limit: 255, null: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.integer  "team_order",      limit: 4
+    t.string   "display_name",    limit: 64
   end
 
 end
