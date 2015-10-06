@@ -66,6 +66,17 @@ li.game span.team-logo {
   background: asset-url('team.jpg') no-repeat;
 }
 
+li.game span.gamedate {
+  background: #2b2b2b;
+  border: none;
+  border-radius: 3px;
+  text-align: center;
+  font-size: 12px;
+  padding: 3px 5px;
+  margin: -10px;
+  width: 170px;
+}
+
 li.game-top, li.game-bottom{
   border-right:1px solid #969696;
   display: -webkit-box;

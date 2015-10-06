@@ -1,5 +1,9 @@
 class Player < ActiveRecord::Base
 
+  #has many match (one player can play in many match)
+  has_many :top_player, class_name: "Matching", foreign_key: "top_player_id", dependent: :destroy
+  has_many :bottom_player, class_name: "Matching", foreign_key: "bottom_player_id", dependent: :destroy
+
   #bcrypt encryption for player password
   has_secure_password
 

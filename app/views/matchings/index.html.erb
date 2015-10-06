@@ -1,0 +1,86 @@
+  <div class="container">
+  <div class="row">
+  <div class="col-md-12">
+  <main id="tournament">
+    <ul class="round round-1">
+      <!-- Round 1 - 32 Teams -->
+      <% @first_round_matches.each do |matcha| %>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> <%= matcha.top_player.team_name unless matcha.top_player.nil? %> </li>
+      <li class="game game-spacer"><span class="gamedate">10/26/2015 11.00am +0800</span></li>
+      <li class="game game-bottom winner"><span class="team-logo"></span> <%= matcha.bottom_player.team_name unless matcha.bottom_player.nil? %> </li>
+
+      <% end %>
+
+      <li class="spacer">&nbsp;</li>
+    </ul>
+    <ul class="round round-2">
+      <!-- Round 2 - 16 Teams -->
+      <% @second_round_matches.each do |matcha| %>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> <%= matcha.top_player.team_name unless matcha.top_player.nil? %> </li>
+      <li class="game game-spacer"><span class="gamedate">10/26/2015 11.00am +0800</span></li>
+      <li class="game game-bottom winner"><span class="team-logo"></span> <%= matcha.bottom_player.team_name unless matcha.bottom_player.nil? %> </li>
+
+      <% end %>
+
+      <li class="spacer">&nbsp;</li>
+    </ul>
+    <ul class="round round-3">
+      <!-- Round 3 - 8 Teams -->
+      <% @third_round_matches.each do |matcha| %>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> <%= matcha.top_player.team_name unless matcha.top_player.nil? %> </li>
+      <li class="game game-spacer"><span class="gamedate">10/26/2015 11.00am +0800</span></li>
+      <li class="game game-bottom winner"><span class="team-logo"></span> <%= matcha.bottom_player.team_name unless matcha.bottom_player.nil? %> </li>
+
+      <% end %>
+
+      <li class="spacer">&nbsp;</li>
+    </ul>
+    <ul class="round round-4">
+      <!-- Round 4 - 4 Teams -->
+      <% @fourth_round_matches.each do |matcha| %>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> <%= matcha.top_player.team_name unless matcha.top_player.nil? %> </li>
+      <li class="game game-spacer"><span class="gamedate">10/26/2015 11.00am +0800</span></li>
+      <li class="game game-bottom winner"><span class="team-logo"></span> <%= matcha.bottom_player.team_name unless matcha.bottom_player.nil? %> </li>
+
+      <% end %>
+
+      <li class="spacer">&nbsp;</li>
+    </ul>
+    <ul class="round round-5">
+      <!-- Round 5 - 2 Teams -->
+      <% @fifth_round_matches.each do |matcha| %>
+
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> <%= matcha.top_player.team_name unless matcha.top_player.nil? %> </li>
+      <li class="game game-spacer"><span class="gamedate">10/26/2015 11.00am +0800</span></li>
+      <li class="game game-bottom winner"><span class="team-logo"></span> <%= matcha.bottom_player.team_name unless matcha.bottom_player.nil? %> </li>
+
+      <% end %>
+
+      <li class="spacer">&nbsp;</li>
+    </ul> 
+    <ul class="round round-6">
+      <!-- Winner -->
+      <li class="spacer">&nbsp;</li>
+
+      <li class="game game-top winner"><span class="team-logo"></span> <%= @winner.top_player.team_name unless @winner.top_player.nil? %></li>
+
+      <li class="spacer">&nbsp;</li>
+    </ul> 
+  </main>
+  </div>
+  </div>
+  </div>

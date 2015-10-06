@@ -60,11 +60,11 @@ class PlayersController < ApplicationController
 
       if @player.team_order.odd?
         firstmatch = Matching.find((@player.team_order + 1)/ 2)
-        firstmatch.top_player = @player.id
+        firstmatch.top_player_id = @player.id
         firstmatch.save
       else
         firstmatch = Matching.find((@player.team_order) / 2)
-        firstmatch.bottom_player = @player.id
+        firstmatch.bottom_player_id = @player.id
         firstmatch.save
       end
 

@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   get 'index' => 'static#index'
   get 'about' => 'static#about'
   get 'teams' => 'static#teams'
-  get 'schedule' => 'static#schedule'
+  
+  get 'schedule' => 'matchings#index'
+  get 'schedule/edit' => 'matchings#schedule'
+
   get 'register' => 'players#new'
   post 'player/create' => 'players#create'
 
