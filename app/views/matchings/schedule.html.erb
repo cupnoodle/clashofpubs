@@ -25,211 +25,94 @@
   <main id="tournament">
     <ul class="round round-1">
       <!-- Round 1 - 32 Teams -->
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> Lousville</li>
-      <li class="game game-spacer"><input type="text" id="datepicker1" placeholder="Choose date here"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> NC A&T</li>
+      <!-- 16 match (1-16) -->
+      <% j = 1 %>
+      <% @first_round_matches.each do |matcha| %>
 
       <li class="spacer">&nbsp;</li>
       
-      <li class="game game-top winner"><span class="team-logo"></span> Colo St</li>
-      <li class="game game-spacer"><input type="text" id="datepicker2"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> Missouri</li>
-
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top "><span class="team-logo"></span> Oklahoma St</li>
-      <li class="game game-spacer"><input type="text" id="datepicker3"></li>
-      <li class="game game-bottom winner"><span class="team-logo"></span> Oregon</li>
-
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> Saint Louis</li>
-      <li class="game game-spacer"><input type="text" id="datepicker4"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> New Mexico St</li>
-
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> Memphis</li>
-      <li class="game game-spacer"><input type="text" id="datepicker5"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> St Mary's</li>
-
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> Mich St</li>
-      <li class="game game-spacer"><input type="text" id="datepicker6"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> Valparaiso</li>
-
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> Creighton</li>
-      <li class="game game-spacer"><input type="text" id="datepicker7"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> Cincinnati</li>
-
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> Duke</li>
-      <li class="game game-spacer"><input type="text" id="datepicker8"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> Albany</li>
-
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> Lousville</li>
-      <li class="game game-spacer"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> NC A&T</li>
-
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> Colo St</li>
-      <li class="game game-spacer"><input type="text" id="datepicker9"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> Missouri</li>
-
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top "><span class="team-logo"></span> Oklahoma St</li>
-      <li class="game game-spacer"><input type="text" id="datepicker10"></li>
-      <li class="game game-bottom winner"><span class="team-logo"></span> Oregon</li>
-
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> Saint Louis</li>
-      <li class="game game-spacer"><input type="text" id="datepicker11"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> New Mexico St</li>
-
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> Memphis</li>
-      <li class="game game-spacer"><input type="text" id="datepicker12"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> St Mary's</li>
-
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> Mich St</li>
-      <li class="game game-spacer"><input type="text" id="datepicker13"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> Valparaiso</li>
-
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> Creighton</li>
-      <li class="game game-spacer"><input type="text" id="datepicker14"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> Cincinnati</li>
-
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> Duke</li>
-      <li class="game game-spacer"><input type="text" id="datepicker15"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> Albany</li>
+      <li class="game game-top winner"><span class="team-logo"></span> <%= matcha.top_player.team_name unless matcha.top_player.nil? %> </li>
+      <% if (@the_player.team_name == matcha.top_player.team_name || @the_player.team_name == matcha.bottom_player.team_name) %>
+      <li class="game game-spacer"><input type="text" id="datepicker<%= j %>"></li><br>
+      <button class="game-button" match-id="<%= matcha.id %>">Submit</button> 
+      <% else %>
+      <li class="game game-spacer"><span class="gamedate"><%= matcha.agreed_datetime unless matcha.agreed_datetime.nil? %></span></li>
+      <% end %>
+      <li class="game game-bottom winner"><span class="team-logo"></span> <%= matcha.bottom_player.team_name unless matcha.bottom_player.nil? %> </li>
+      <% j += 1 %>
+      <% end %>
 
       <li class="spacer">&nbsp;</li>
     </ul>
     <ul class="round round-2">
       <!-- Round 2 - 16 Teams -->
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> Lousville</li>
-      <li class="game game-spacer"><input type="text" id="datepicker16"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> NC A&T</li>
+      <!-- 8 match (17 - 24) -->
+      <% j = 17 %>
+      <% @second_round_matches.each do |matcha| %>
 
       <li class="spacer">&nbsp;</li>
       
-      <li class="game game-top winner"><span class="team-logo"></span> Colo St</li>
-      <li class="game game-spacer"><input type="text" id="datepicker17"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> Missouri</li>
-
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top "><span class="team-logo"></span> Oklahoma St</li>
-      <li class="game game-spacer"><input type="text" id="datepicker18"></li>
-      <li class="game game-bottom winner"><span class="team-logo"></span> Oregon</li>
-
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> Saint Louis</li>
-      <li class="game game-spacer"><input type="text" id="datepicker19"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> New Mexico St</li>
-
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> Memphis</li>
-      <li class="game game-spacer"><input type="text" id="datepicker20"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> St Mary's</li>
-
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> Mich St</li>
-      <li class="game game-spacer"><input type="text" id="datepicker21"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> Valparaiso</li>
-
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> Creighton</li>
-      <li class="game game-spacer"><input type="text" id="datepicker22"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> Cincinnati</li>
-
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> Duke</li>
-      <li class="game game-spacer"><input type="text" id="datepicker23"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> Albany</li>
+      <li class="game game-top winner"><span class="team-logo"></span> <%= matcha.top_player.team_name unless matcha.top_player.nil? %> </li>
+      <li class="game game-spacer"><input type="text" id="datepicker<%= j %>"></li>
+      <li class="game game-bottom winner"><span class="team-logo"></span> <%= matcha.bottom_player.team_name unless matcha.bottom_player.nil? %> </li>
+      <% j += 1 %>
+      <% end %>
 
       <li class="spacer">&nbsp;</li>
     </ul>
     <ul class="round round-3">
-      <li class="spacer">&nbsp;</li>
-
-      <li class="game game-top winner"><span class="team-logo"></span> Lousville</li>
-      <li class="game game-spacer"><input type="text" id="datepicker24"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> Colo St</li>
-
-      <li class="spacer">&nbsp;</li>
-
-      <li class="game game-top winner"><span class="team-logo"></span> Oregon</li>
-      <li class="game game-spacer"><input type="text" id="datepicker25"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> Saint Louis</li>
+      <!-- Round 3 - 8 Teams -->
+      <!-- 4 match (25 - 28) -->
+      <% j = 25 %>
+      <% @third_round_matches.each do |matcha| %>
 
       <li class="spacer">&nbsp;</li>
-
-      <li class="game game-top "><span class="team-logo"></span> Memphis</li>
-      <li class="game game-spacer"><input type="text" id="datepicker26"></li>
-      <li class="game game-bottom winner"><span class="team-logo"></span> Mich St</li>
-
-      <li class="spacer">&nbsp;</li>
-
-      <li class="game game-top "><span class="team-logo"></span> Creighton</li>
-      <li class="game game-spacer"><input type="text" id="datepicker27"></li>
-      <li class="game game-bottom winner"><span class="team-logo"></span> Duke</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> <%= matcha.top_player.team_name unless matcha.top_player.nil? %> </li>
+      <li class="game game-spacer"><input type="text" id="datepicker<%= j %>"></li>
+      <li class="game game-bottom winner"><span class="team-logo"></span> <%= matcha.bottom_player.team_name unless matcha.bottom_player.nil? %> </li>
+      <% j += 1 %>
+      <% end %>
 
       <li class="spacer">&nbsp;</li>
     </ul>
     <ul class="round round-4">
+      <!-- Round 4 - 4 Teams -->
+      <!-- 2 match (29 - 30) -->
+      <% j = 29 %>
+      <% @fourth_round_matches.each do |matcha| %>
+
       <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> <%= matcha.top_player.team_name unless matcha.top_player.nil? %> </li>
+      <li class="game game-spacer"><input type="text" id="datepicker<%= j %>"></li>
+      <li class="game game-bottom winner"><span class="team-logo"></span> <%= matcha.bottom_player.team_name unless matcha.bottom_player.nil? %> </li>
+      <% j += 1 %>
+      <% end %>
 
-      <li class="game game-top winner"><span class="team-logo"></span> Lousville</li>
-      <li class="game game-spacer"><input type="text" id="datepicker28"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> Oregon</li>
-
-      <li class="spacer">&nbsp;</li>
-
-      <li class="game game-top "><span class="team-logo"></span> Mich St</li>
-      <li class="game game-spacer"><input type="text" id="datepicker29"></li>
-      <li class="game game-bottom winner"><span class="team-logo"></span> Duke</li>
 
       <li class="spacer">&nbsp;</li>
     </ul>
     <ul class="round round-5">
-      <li class="spacer">&nbsp;</li>
+      <!-- Round 5 - 2 Teams -->
+      <!-- 1 match (31 - 31) -->
+      <% j = 31 %>
+      <% @fifth_round_matches.each do |matcha| %>
 
-      <li class="game game-top winner"><span class="team-logo"></span> Lousville</li>
-      <li class="game game-spacer"><input type="text" id="datepicker30"></li>
-      <li class="game game-bottom "><span class="team-logo"></span> Duke</li>
+      <li class="spacer">&nbsp;</li>
+      
+      <li class="game game-top winner"><span class="team-logo"></span> <%= matcha.top_player.team_name unless matcha.top_player.nil? %> </li>
+      <li class="game game-spacer"><input type="text" id="datepicker<%= j %>"></li>
+      <li class="game game-bottom winner"><span class="team-logo"></span> <%= matcha.bottom_player.team_name unless matcha.bottom_player.nil? %> </li>
+      <% j += 1 %>
+      <% end %>
 
       <li class="spacer">&nbsp;</li>
     </ul> 
     <ul class="round round-6">
       <li class="spacer">&nbsp;</li>
 
-      <li class="game game-top winner"><span class="team-logo"></span> Lousville</li>
+      <li class="game game-top winner"><span class="team-logo"></span> <%= @winner.top_player.team_name unless @winner.top_player.nil? %></li>
 
       <li class="spacer">&nbsp;</li>
     </ul> 

@@ -32,8 +32,38 @@ class MatchingsController < ApplicationController
 
   # page that let player edit match time
   def schedule
+
+    if !is_logged_in
+      redirect_to(:controller => 'players' , :action => 'login')
+    end
+
+
+    #player variable
+    @the_player = Player.find(session[:player_id])
+
+    #first round
+    @first_round_matches = Matching.where(:id => 1..16).order('id ASC')
+
+    #second round
+    @second_round_matches = Matching.where(:id => 17..24).order('id ASC')
+
+    #third_round
+    @third_round_matches = Matching.where(:id => 25..28).order('id ASC')
+
+    #fourth round
+    @fourth_round_matches = Matching.where(:id => 29..30).order('id ASC')
+
+    #fifth round
+    @fifth_round_matches = Matching.where(:id => 31)
+
+    #winner
+    @winner = Matching.where(:id => 32).first
+
   end
 
+  def set_datetime
+    
+  end
 
   private
 
