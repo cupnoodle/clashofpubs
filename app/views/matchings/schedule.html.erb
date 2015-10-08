@@ -11,7 +11,7 @@
           $( "#datepicker" + i ).datetimepicker({
             controlType: 'select',
             oneLine: true,
-            timeFormat: 'hh:mm tt z'
+            timeFormat: 'hh:mm tt'
           });
         }
       });
@@ -22,6 +22,13 @@
   <div class="container">
   <div class="row">
   <div class="col-md-12">
+    <% if !flash[:notice].blank? %>
+      <!-- blank => nil? || empty?-->
+      <div class="notice_box">
+        <%= raw(flash[:notice]) %>
+      </div>
+    <% end %>
+    
   <main id="tournament">
     <ul class="round round-1">
       <!-- Round 1 - 32 Teams -->
@@ -32,11 +39,16 @@
       <li class="spacer">&nbsp;</li>
       
       <li class="game game-top winner"><span class="team-logo"></span> <%= matcha.top_player.team_name unless matcha.top_player.nil? %> </li>
-      <% if (@the_player.team_name == matcha.top_player.team_name || @the_player.team_name == matcha.bottom_player.team_name) %>
-      <li class="game game-spacer"><input type="text" id="datepicker<%= j %>"></li><br>
-      <button class="game-button" match-id="<%= matcha.id %>">Submit</button> 
+      <% if (@the_player.team_name == matcha.top_player.team_name || @the_player.team_name == matcha.bottom_player.team_name) && matcha.agreed_datetime.nil? %>
+      
+        <%= form_tag({:action => "submit_datetime"}) do |f| %>
+          <li class="game game-spacer"><%= text_field_tag :datetime, nil , id: "datepicker" + j.to_s %></li><br>
+          <%= hidden_field_tag  "match_id", matcha.id %>
+          <%= submit_tag "Submit", class: "game-button" %> 
+        <% end %>
+
       <% else %>
-      <li class="game game-spacer"><span class="gamedate"><%= matcha.agreed_datetime unless matcha.agreed_datetime.nil? %></span></li>
+        <li class="game game-spacer"><span class="gamedate"><%= matcha.agreed_datetime unless matcha.agreed_datetime.nil? %></span></li>
       <% end %>
       <li class="game game-bottom winner"><span class="team-logo"></span> <%= matcha.bottom_player.team_name unless matcha.bottom_player.nil? %> </li>
       <% j += 1 %>

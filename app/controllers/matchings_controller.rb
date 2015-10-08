@@ -61,7 +61,13 @@ class MatchingsController < ApplicationController
 
   end
 
-  def set_datetime
+  def submit_datetime
+    #if no these input parameter return false
+    if !params.has_key?(:datetime) || !params.has_key?(:match_id)
+      flash[:notice] = "Insufficient parameters input"
+      redirect_to(:action => "schedule")
+    end
+
     
   end
 

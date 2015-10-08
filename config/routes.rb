@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   
   get 'schedule' => 'matchings#index'
   get 'schedule/edit' => 'matchings#schedule'
+  post 'schedule/submit' => 'matchings#submit_datetime'
 
   get 'register' => 'players#new'
   post 'player/create' => 'players#create'
