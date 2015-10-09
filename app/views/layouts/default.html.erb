@@ -27,14 +27,14 @@
         <!-- Navigation -->
         <div class="nav-wrap">
           <ul class="group" id="navigation">
-            <li <%= @is_index_page %> ><a href="index.html">HOME</a></li>
-            <li <%= @is_team_page %> ><a href="teams.html">TEAMS</a></li>
-            <li <%= @is_schedule_page %> ><a href="schedule.html">SCHEDULE</a></li>
+            <li <%= @is_index_page %> ><%= link_to "HOME", :controller => :static, :action => :index %></li>
+            <li <%= @is_team_page %> ><%= link_to "TEAMS", :controller => :static, :action => :teams %></li>
+            <li <%= @is_schedule_page %> ><%= link_to "SCHEDULE", :controller => :matchings, :action => :index %></li>
             <li <%= @is_register_page %> >
               <% if session[:player_id] %>
-                <a href="logout.html">LOGOUT</a>
+                <%= link_to "LOGOUT", :controller => :players, :action => :logout %>
               <% else %>
-                <a href="register.html">REGISTER</a>
+                <%= link_to "REGISTER", :controller => :players, :action => :new %>
               <% end %>
             </li>
             <li <%= @is_about_page %> ><a href="about.html">ABOUT</a></li>

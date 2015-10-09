@@ -66,8 +66,57 @@ class MatchingsController < ApplicationController
     if !params.has_key?(:datetime) || !params.has_key?(:match_id)
       flash[:notice] = "Insufficient parameters input"
       redirect_to(:action => "schedule")
+      return
     end
 
+    #find the match based on match id
+    match = Matching.where(:id => params[:match_id].to_i).first
+    #eg :2015-10-10 12:00 am
+
+    #if cant find the match
+    if match.nil?
+      flash[:notice] = "Invalid match input"
+      redirect_to(:action => "schedule")
+      return
+    end
+
+    begin
+    input_datetime = DateTime.strptime(params[:datetime], '%Y-%m-%d %H:%M %P')
+    #in case of invalid datetime format supplied
+    rescue
+      flash[:notice] = "Invalid date input"
+      redirect_to(:action => "schedule")
+      return
+    end
+
+    player = Player.find(session[:player_id])
+
+    #check the player is belong to top or bottom
+    #then assign match time with respect to player position
+    if match.top_player_id == session[:player_id]
+      match.top_datetime = input_datetime
+    elsif match.bottom_player_id == session[:player_id]
+      match.bottom_datetime = input_datetime
+    else
+      flash[:notice] = "Invalid player for the match"
+      redirect_to(:action => "schedule")
+      return
+    end
+
+    match.save
+
+    #if both datetime is same then the datetime is agreed
+    if(match.top_datetime == match.bottom_datetime)
+      match.agreed_datetime = match.bottom_datetime
+      match.save
+      flash[:notice] = "Match time has been confirmed and finalized at " + match.bottom_datetime.strftime("%Y-%m-%d %H:%M %P")
+    else
+      flash[:notice] = "Match time has been successfully set, pending for opponent"
+    end
+    redirect_to(:action => "schedule")
+
+    @datetime = params[:datetime]
+    @match_id = params[:match_id]
     
   end
 

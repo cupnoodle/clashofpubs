@@ -1,6 +1,7 @@
   <div class="container">
   <div class="row">
   <div class="col-md-12">
+    <h2 style="color:#EEE;"> The timezone used is PST (UTC -8) </h2>
   <main id="tournament">
     <ul class="round round-1">
       <!-- Round 1 - 32 Teams -->
@@ -9,7 +10,7 @@
       <li class="spacer">&nbsp;</li>
       
       <li class="game game-top winner"><span class="team-logo"></span> <%= matcha.top_player.team_name unless matcha.top_player.nil? %> </li>
-      <li class="game game-spacer"><span class="gamedate">10/26/2015 11.00am +0800</span></li>
+      <li class="game game-spacer"><span class="gamedate"><%= matcha.agreed_datetime.strftime("%Y-%b-%d at %I:%M %P") unless matcha.agreed_datetime.nil? %></span></li>
       <li class="game game-bottom winner"><span class="team-logo"></span> <%= matcha.bottom_player.team_name unless matcha.bottom_player.nil? %> </li>
 
       <% end %>
@@ -23,7 +24,7 @@
       <li class="spacer">&nbsp;</li>
       
       <li class="game game-top winner"><span class="team-logo"></span> <%= matcha.top_player.team_name unless matcha.top_player.nil? %> </li>
-      <li class="game game-spacer"><span class="gamedate">10/26/2015 11.00am +0800</span></li>
+      <li class="game game-spacer"><span class="gamedate"><%= matcha.agreed_datetime.strftime("%Y-%b-%d at %I:%M %P") unless matcha.agreed_datetime.nil? %></span></li>
       <li class="game game-bottom winner"><span class="team-logo"></span> <%= matcha.bottom_player.team_name unless matcha.bottom_player.nil? %> </li>
 
       <% end %>
@@ -37,7 +38,7 @@
       <li class="spacer">&nbsp;</li>
       
       <li class="game game-top winner"><span class="team-logo"></span> <%= matcha.top_player.team_name unless matcha.top_player.nil? %> </li>
-      <li class="game game-spacer"><span class="gamedate">10/26/2015 11.00am +0800</span></li>
+      <li class="game game-spacer"><span class="gamedate"><%= matcha.agreed_datetime.strftime("%Y-%b-%d at %I:%M %P") unless matcha.agreed_datetime.nil? %></span></li>
       <li class="game game-bottom winner"><span class="team-logo"></span> <%= matcha.bottom_player.team_name unless matcha.bottom_player.nil? %> </li>
 
       <% end %>
@@ -51,7 +52,7 @@
       <li class="spacer">&nbsp;</li>
       
       <li class="game game-top winner"><span class="team-logo"></span> <%= matcha.top_player.team_name unless matcha.top_player.nil? %> </li>
-      <li class="game game-spacer"><span class="gamedate">10/26/2015 11.00am +0800</span></li>
+      <li class="game game-spacer"><span class="gamedate"><%= matcha.agreed_datetime.strftime("%Y-%b-%d at %I:%M %P") unless matcha.agreed_datetime.nil? %></span></li>
       <li class="game game-bottom winner"><span class="team-logo"></span> <%= matcha.bottom_player.team_name unless matcha.bottom_player.nil? %> </li>
 
       <% end %>
@@ -65,7 +66,7 @@
       <li class="spacer">&nbsp;</li>
       
       <li class="game game-top winner"><span class="team-logo"></span> <%= matcha.top_player.team_name unless matcha.top_player.nil? %> </li>
-      <li class="game game-spacer"><span class="gamedate">10/26/2015 11.00am +0800</span></li>
+      <li class="game game-spacer"><span class="gamedate"><%= matcha.agreed_datetime.strftime("%Y-%b-%d at %I:%M %P") unless matcha.agreed_datetime.nil? %></span></li>
       <li class="game game-bottom winner"><span class="team-logo"></span> <%= matcha.bottom_player.team_name unless matcha.bottom_player.nil? %> </li>
 
       <% end %>
