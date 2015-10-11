@@ -34,6 +34,9 @@ gem 'rest-client'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+#Use pluck to hash to convert pluck array to hash
+gem 'pluck_to_hash'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

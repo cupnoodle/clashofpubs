@@ -10,6 +10,8 @@ class StaticController < ApplicationController
   #team page
   def teams
     @is_team_page = 'class=current_page_item'
+
+    @teams_hash_array = Player.order(:created_at => :desc).pluck_to_hash(:team_name, :mmr)
   end
 
   #schedule page

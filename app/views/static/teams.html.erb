@@ -9,102 +9,11 @@
             </div>
           </div>
           <div class="row">
+            <% @teams_hash_array.each do |team| %>
             <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> <a href="#" data-toggle="tooltip" data-placement="top" title="3000 MMR">Lousville</a> 
+              <span class="squarebox"></span> <a href="#" data-toggle="tooltip" data-placement="top" title="<%= team[:mmr] %> MMR"><%= team[:team_name] %></a>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3 team">
-              <span class="squarebox"></span> Lousville
-            </div>
+            <% end %>
           </div>
         </div>
       </div>
