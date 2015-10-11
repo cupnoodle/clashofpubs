@@ -38,46 +38,13 @@
       <% j = 1 %>
       <% @first_round_matches.each do |matcha| %>
 
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> <%= matcha.top_player.team_name unless matcha.top_player.nil? %> </li>
-      <% if (@the_player.team_name == matcha.top_player.team_name || @the_player.team_name == matcha.bottom_player.team_name) && matcha.agreed_datetime.nil? %>
-
-        <% if (@the_player.team_name == matcha.top_player.team_name && !matcha.bottom_datetime.nil? ) %>
-        <script>
-          $(function(){
-            $("input[name='datetime']").tooltip({'trigger':'focus', 'title': '(Opponent team has choose <%= matcha.bottom_datetime.strftime("%Y-%b-%d %I:%M %P") %>, match time will be confirmed if you choose the same time as your opponent)', 'placement': 'left'});
-          });
-        </script>
+        <% if matcha.top_player.nil?  || matcha.bottom_player.nil? %>
+        <%= render partial: 'emptyround' %>
+        <% else %>
+        <%= render partial: 'round', locals: {:the_player => @the_player, :matcha => matcha, :counter => j} %>
+        
         <% end %>
 
-        <% if (@the_player.team_name == matcha.bottom_player.team_name && !matcha.top_datetime.nil? ) %>
-        <script>
-          $(function(){
-            $("input[name='datetime']").tooltip({'trigger':'focus', 'title': '(Opponent team has choose <%= matcha.top_datetime.strftime("%Y-%b-%d %I:%M %P") %>, match time will be confirmed if you choose the same time as your opponent)', 'placement': 'left'});
-          });
-        </script>
-        <% end %>
-
-
-        <% if (@the_player.team_name == matcha.bottom_player.team_name) %>
-          <% selected_datetime = matcha.bottom_datetime %>
-        <% end %>
-
-        <% if (@the_player.team_name == matcha.top_player.team_name) %>
-          <% selected_datetime = matcha.top_datetime %>
-        <% end %>
-
-        <%= form_tag({:action => "submit_datetime"}) do |f| %>
-          <li class="game game-spacer"><%= text_field_tag :datetime, nil , id: "datepicker" + j.to_s , placeholder: (selected_datetime.nil? ? "" : selected_datetime.strftime("%Y-%m-%d %I:%M %P") ) %></li><br>
-          <%= hidden_field_tag  "match_id", matcha.id %>
-          <%= submit_tag "Submit", class: "game-button" %> 
-        <% end %>
-
-      <% else %>
-        <li class="game game-spacer"><span class="gamedate"><%= matcha.agreed_datetime.strftime("%Y-%b-%d at %I:%M %P") unless matcha.agreed_datetime.nil? %></span></li>
-      <% end %>
-      <li class="game game-bottom winner"><span class="team-logo"></span> <%= matcha.bottom_player.team_name unless matcha.bottom_player.nil? %> </li>
       <% j += 1 %>
       <% end %>
 
@@ -89,11 +56,13 @@
       <% j = 17 %>
       <% @second_round_matches.each do |matcha| %>
 
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> <%= matcha.top_player.team_name unless matcha.top_player.nil? %> </li>
-      <li class="game game-spacer"><input type="text" id="datepicker<%= j %>"></li>
-      <li class="game game-bottom winner"><span class="team-logo"></span> <%= matcha.bottom_player.team_name unless matcha.bottom_player.nil? %> </li>
+        <% if matcha.top_player.nil?  || matcha.bottom_player.nil? %>
+        <%= render partial: 'emptyround' %>
+        <% else %>
+        <%= render partial: 'round', locals: {:the_player => @the_player, :matcha => matcha, :counter => j} %>
+        
+        <% end %>
+
       <% j += 1 %>
       <% end %>
 
@@ -105,11 +74,13 @@
       <% j = 25 %>
       <% @third_round_matches.each do |matcha| %>
 
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> <%= matcha.top_player.team_name unless matcha.top_player.nil? %> </li>
-      <li class="game game-spacer"><input type="text" id="datepicker<%= j %>"></li>
-      <li class="game game-bottom winner"><span class="team-logo"></span> <%= matcha.bottom_player.team_name unless matcha.bottom_player.nil? %> </li>
+        <% if matcha.top_player.nil?  || matcha.bottom_player.nil? %>
+        <%= render partial: 'emptyround' %>
+        <% else %>
+        <%= render partial: 'round', locals: {:the_player => @the_player, :matcha => matcha, :counter => j} %>
+        
+        <% end %>
+
       <% j += 1 %>
       <% end %>
 
@@ -121,14 +92,15 @@
       <% j = 29 %>
       <% @fourth_round_matches.each do |matcha| %>
 
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> <%= matcha.top_player.team_name unless matcha.top_player.nil? %> </li>
-      <li class="game game-spacer"><input type="text" id="datepicker<%= j %>"></li>
-      <li class="game game-bottom winner"><span class="team-logo"></span> <%= matcha.bottom_player.team_name unless matcha.bottom_player.nil? %> </li>
+        <% if matcha.top_player.nil?  || matcha.bottom_player.nil? %>
+        <%= render partial: 'emptyround' %>
+        <% else %>
+        <%= render partial: 'round', locals: {:the_player => @the_player, :matcha => matcha, :counter => j} %>
+        
+        <% end %>
+
       <% j += 1 %>
       <% end %>
-
 
       <li class="spacer">&nbsp;</li>
     </ul>
@@ -138,11 +110,13 @@
       <% j = 31 %>
       <% @fifth_round_matches.each do |matcha| %>
 
-      <li class="spacer">&nbsp;</li>
-      
-      <li class="game game-top winner"><span class="team-logo"></span> <%= matcha.top_player.team_name unless matcha.top_player.nil? %> </li>
-      <li class="game game-spacer"><input type="text" id="datepicker<%= j %>"></li>
-      <li class="game game-bottom winner"><span class="team-logo"></span> <%= matcha.bottom_player.team_name unless matcha.bottom_player.nil? %> </li>
+        <% if matcha.top_player.nil?  || matcha.bottom_player.nil? %>
+        <%= render partial: 'emptyround' %>
+        <% else %>
+        <%= render partial: 'round', locals: {:the_player => @the_player, :matcha => matcha, :counter => j} %>
+        
+        <% end %>
+
       <% j += 1 %>
       <% end %>
 
