@@ -37,7 +37,7 @@
                 <%= link_to "REGISTER", :controller => :players, :action => :new %>
               <% end %>
             </li>
-            <li <%= @is_about_page %> ><a href="about.html">ABOUT</a></li>
+            <li <%= @is_about_page %> ><%= link_to "ABOUT", :controller => :static, :action => :about %></li>
           </ul>
         </div>
       </div>
