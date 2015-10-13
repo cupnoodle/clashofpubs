@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clash of Pubs - Season 2</title>
+  <meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+  <%= csrf_meta_tags %>
+
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+
+  <!-- Header with Navigation START -->
+  <div class="container-fluid">
+    <div class="row header">
+
+      <div class="col-md-2">
+        <h1 id="logo"><a href="/index.html"><span>Clash of Pubs</span></a></h1>
+      </div>
+
+
+      <div class="col-md-8">
+        <!-- Navigation -->
+        <div class="nav-wrap">
+          <ul class="group" id="navigation">
+            <li <%= @is_index_page %> ><%= link_to "HOME", :controller => :admin, :action => :index %></li>
+            <li <%= @is_team_page %> ><%= link_to "TEAMS", :controller => :static, :action => :teams %></li>
+            <li <%= @is_schedule_page %> ><%= link_to "SCHEDULE", :controller => :matchings, :action => :index %></li>
+            <li><%= link_to "LOGOUT", :action => :logout %></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <h1 id="insignia"><span>Insignia</span>
+      </div>
+    </div>
+  </div> <!-- /.container -->
+  <!-- Header with Navigation END -->
+
+  <!-- Content START -->
+  <%= yield %>
+  <!-- Content END -->
+
+  <!-- Footer START -->
+  <footer>
+        <div class="container-fluid">
+            <div style="text-align: left; position: absolute;">SEASON 2</div>
+            <div style="text-align: right;">2015</div> 
+        </div>
+    </footer>
+    <!-- Footer END -->
+
+    <%= yield :datepicker %>
+
+  <!-- Animated Navigation Bar Script -->
+  <script type="text/javascript">
+  $(function() {
+
+    var $el, leftPos, newWidth,
+        $mainNav = $("#navigation");
+    
+    $mainNav.append("<li id='magic-line'></li>");
+    var $magicLine = $("#magic-line");
+    
+    $magicLine
+        .width($(".current_page_item").width())
+        .css("left", $(".current_page_item a").position().left)
+        .data("origLeft", $magicLine.position().left)
+        .data("origWidth", $magicLine.width());
+        
+    $("#navigation li a").hover(function() {
+        $el = $(this);
+        leftPos = $el.position().left;
+        newWidth = $el.parent().width();
+        $magicLine.stop().animate({
+            left: leftPos,
+            width: newWidth
+        });
+    }, function() {
+        $magicLine.stop().animate({
+            left: $magicLine.data("origLeft"),
+            width: $magicLine.data("origWidth")
+        });    
+    });
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+  </script>
+
+</body>
+</html>

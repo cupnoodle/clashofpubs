@@ -18,6 +18,11 @@ Rails.application.routes.draw do
   post 'login' => 'players#attempt_login'
   get 'logout' => 'players#logout'
 
+  get 'admin' => 'admin#index'
+  get 'admin/login' => 'admin#login'
+  post 'admin/login' => 'admin#attempt_login'
+  get 'admin/logout' => 'admin#logout'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

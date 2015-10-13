@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clash of Pubs - Season 2</title>
+  <meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+  <%= csrf_meta_tags %>
+
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+  <!-- Header with Navigation START -->
+  <div class="container-fluid">
+    <div class="row header">
+
+      <div class="col-md-2">
+        <h1 id="logo"><a href="/index.html"><span>Clash of Pubs</span></a></h1>
+      </div>
+
+
+      <div class="col-md-8">
+        <!-- Navigation -->
+      </div>
+
+      <div class="col-md-2">
+        <h1 id="insignia"><span>Insignia</span>
+      </div>
+    </div>
+  </div> <!-- /.container -->
+  <!-- Header with Navigation END -->
+
+  <!-- Content START -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          <h1 id="login">Admin Login</h1>
+        <div class="form">
+
+          <% if !flash[:notice].blank? %>
+            <!-- blank => nil? || empty?-->
+            <div class="notice_box">
+              <%= raw(flash[:notice]) %>
+            </div>
+          <% end %>
+
+          <%= form_tag({:action => "attempt_login"}) do |f| %>
+            <div class="form-group">
+              <label for="name">Admin name</label>
+              <%= text_field_tag :name, nil, placeholder: "Enter name here", class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <label for="password">Admin Password</label>
+              <%= password_field_tag :password, nil, placeholder: "Password", class: "form-control" %>
+            </div><br>
+
+             <%= submit_tag "Login", class: "btn btn-default" %> <br><br> 
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Content END -->
+
+  <!-- Footer START -->
+  <footer>
+        <div class="container-fluid">
+            <div style="text-align: left; position: absolute;">SEASON 2</div>
+            <div style="text-align: right;">2015</div> 
+        </div>
+    </footer>
+    <!-- Footer END -->
+
+
+</body>
+</html>
