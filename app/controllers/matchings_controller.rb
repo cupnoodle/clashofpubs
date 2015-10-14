@@ -71,7 +71,7 @@ class MatchingsController < ApplicationController
 
     #find the match based on match id
     match = Matching.where(:id => params[:match_id].to_i).first
-    #eg :2015-10-10 12:00 am
+    
 
     #if cant find the match
     if match.nil?
@@ -81,6 +81,7 @@ class MatchingsController < ApplicationController
     end
 
     begin
+    #eg :2015-10-10 12:00 am
     input_datetime = DateTime.strptime(params[:datetime], '%Y-%m-%d %H:%M %P')
     #in case of invalid datetime format supplied
     rescue

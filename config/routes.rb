@@ -22,6 +22,10 @@ Rails.application.routes.draw do
   get 'admin/login' => 'admin#login'
   post 'admin/login' => 'admin#attempt_login'
   get 'admin/logout' => 'admin#logout'
+  get 'admin/schedule' => 'admin#schedule'
+  post 'admin/schedule' => 'admin#update_match'
+  get 'admin/winner' => 'admin#winner'
+  post 'admin/winner' => 'admin#update_winner'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

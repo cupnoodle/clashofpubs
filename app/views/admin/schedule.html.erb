@@ -1,0 +1,115 @@
+  <% content_for :datepicker do %>
+    <!-- Datepicker START -->
+    <script>
+      $(function() {
+
+        $("#datepicker").datetimepicker({
+          controlType: 'select',
+          oneLine: true,
+          dateFormat: "yy-mm-dd",
+          timeFormat: 'hh:mm tt'
+        });
+
+        $("#cleartime").click(function() {
+          $("#datepicker").val("");
+        });
+      });
+    </script>
+    <!-- Datepicker END -->
+  <% end %>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 style="color:#EEE;"> The timezone used is PST (UTC -8) </h2>
+      <main id="tournament">
+        <ul class="round round-1">
+          <!-- Round 1 - 32 Teams -->
+          <% @first_round_matches.each do |matcha| %>
+            <%= render partial: 'round', locals: {:matcha => matcha} %>
+          <% end %>
+    
+          <li class="spacer">&nbsp;</li>
+        </ul>
+        <ul class="round round-2">
+          <!-- Round 2 - 16 Teams -->
+          <% @second_round_matches.each do |matcha| %>
+            <%= render partial: 'round', locals: {:matcha => matcha} %>
+          <% end %>
+    
+          <li class="spacer">&nbsp;</li>
+        </ul>
+        <ul class="round round-3">
+          <!-- Round 3 - 8 Teams -->
+          <% @third_round_matches.each do |matcha| %>
+            <%= render partial: 'round', locals: {:matcha => matcha} %>
+          <% end %>
+    
+          <li class="spacer">&nbsp;</li>
+        </ul>
+        <ul class="round round-4">
+          <!-- Round 4 - 4 Teams -->
+          <% @fourth_round_matches.each do |matcha| %>
+            <%= render partial: 'round', locals: {:matcha => matcha} %>
+          <% end %>
+    
+          <li class="spacer">&nbsp;</li>
+        </ul>
+        <ul class="round round-5">
+          <!-- Round 5 - 2 Teams -->
+          <% @fifth_round_matches.each do |matcha| %>
+            <%= render partial: 'round', locals: {:matcha => matcha} %>
+          <% end %>
+    
+          <li class="spacer">&nbsp;</li>
+        </ul> 
+        <ul class="round round-6">
+          <!-- Winner -->
+          <li class="spacer">&nbsp;</li>
+          <span class="matchtitle"> Winner </span>
+          <li class="game game-top winner"><span class="team-logo"></span> <%= @winner.top_player.team_name unless @winner.top_player.nil? %></li>
+    
+          <li class="spacer">&nbsp;</li>
+        </ul> 
+      </main>
+      <br><br>
+      <h2> Edit match </h2>
+
+
+          <% if !flash[:notice].blank? %>
+            <!-- blank => nil? || empty?-->
+            <div class="notice_box">
+              <%= raw(flash[:notice]) %>
+            </div>
+          <% end %>
+
+          <%= form_tag({:action => "update_match"}) do |f| %>
+            <div class="form-group">
+              <label for="match_id">Match #</label>
+              <%= select_tag(:match_id, options_for_select(@match_select_array)) %>
+            </div>
+
+            <div class="form-group">
+              <label for="match_top_player_id">Upper team</label>
+              <%= select_tag(:match_top_player_id, options_for_select(@team_select_array)) %>
+            </div>
+
+            <div class="form-group">
+              <label for="match_bottom_player_id">Bottom team</label>
+              <%= select_tag(:match_bottom_player_id, options_for_select(@team_select_array)) %>
+            </div>
+
+            <div class="form-group">
+              <label for="match_time">Match time</label> (Leave blank to let player choose) <br>
+              <%= text_field_tag :match_time, nil , id: "datepicker" %>
+              <button type="button" class="btn btn-sm" id="cleartime">Clear</button>
+            </div>
+
+             <%= submit_tag "Update", class: "btn btn-default" ,  :onclick => "return confirm('Confirm update?')"  %> <br><br> 
+          <% end %>
+
+      </div>
+    </div>
+  </div>
+

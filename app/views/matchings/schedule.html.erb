@@ -39,7 +39,7 @@
       <% @first_round_matches.each do |matcha| %>
 
         <% if matcha.top_player.nil?  || matcha.bottom_player.nil? %>
-        <%= render partial: 'emptyround' %>
+        <%= render partial: 'emptyround', locals: {:matcha => matcha} %>
         <% else %>
         <%= render partial: 'round', locals: {:the_player => @the_player, :matcha => matcha, :counter => j} %>
         
@@ -57,7 +57,7 @@
       <% @second_round_matches.each do |matcha| %>
 
         <% if matcha.top_player.nil?  || matcha.bottom_player.nil? %>
-        <%= render partial: 'emptyround' %>
+        <%= render partial: 'emptyround', locals: {:matcha => matcha} %>
         <% else %>
         <%= render partial: 'round', locals: {:the_player => @the_player, :matcha => matcha, :counter => j} %>
         
@@ -75,7 +75,7 @@
       <% @third_round_matches.each do |matcha| %>
 
         <% if matcha.top_player.nil?  || matcha.bottom_player.nil? %>
-        <%= render partial: 'emptyround' %>
+        <%= render partial: 'emptyround', locals: {:matcha => matcha} %>
         <% else %>
         <%= render partial: 'round', locals: {:the_player => @the_player, :matcha => matcha, :counter => j} %>
         
@@ -93,7 +93,7 @@
       <% @fourth_round_matches.each do |matcha| %>
 
         <% if matcha.top_player.nil?  || matcha.bottom_player.nil? %>
-        <%= render partial: 'emptyround' %>
+        <%= render partial: 'emptyround', locals: {:matcha => matcha} %>
         <% else %>
         <%= render partial: 'round', locals: {:the_player => @the_player, :matcha => matcha, :counter => j} %>
         
@@ -111,7 +111,7 @@
       <% @fifth_round_matches.each do |matcha| %>
 
         <% if matcha.top_player.nil?  || matcha.bottom_player.nil? %>
-        <%= render partial: 'emptyround' %>
+        <%= render partial: 'emptyround', locals: {:matcha => matcha} %>
         <% else %>
         <%= render partial: 'round', locals: {:the_player => @the_player, :matcha => matcha, :counter => j} %>
         

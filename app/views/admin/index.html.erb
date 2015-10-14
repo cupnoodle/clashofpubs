@@ -1,1 +1,8 @@
-admin index placeholder
+<div class="container">
+          <% if !flash[:notice].blank? %>
+            <!-- blank => nil? || empty?-->
+            <div class="notice_box">
+              <%= raw(flash[:notice]) %>
+            </div>
+          <% end %>
+</div>

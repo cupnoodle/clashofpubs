@@ -6,7 +6,7 @@
         <% if (the_player.team_name == matcha.top_player.team_name && !matcha.bottom_datetime.nil? ) %>
         <script>
           $(function(){
-            $("input[name='datetime']").tooltip({'trigger':'focus', 'title': '(Opponent team has choose <%= matcha.bottom_datetime.strftime("%Y-%b-%d %I:%M %P") %>, match time will be confirmed if you choose the same time as your opponent)', 'placement': 'left'});
+            $("input[name='datetime']").tooltip({'trigger':'focus', 'title': '(Opponent team has choose <%= matcha.bottom_datetime.strftime("%Y-%b-%d %I:%M %P") %>, match time will be confirmed if you choose the same time as your opponent)', 'placement': 'right'});
           });
         </script>
         <% end %>
@@ -14,7 +14,7 @@
         <% if (the_player.team_name == matcha.bottom_player.team_name && !matcha.top_datetime.nil? ) %>
         <script>
           $(function(){
-            $("input[name='datetime']").tooltip({'trigger':'focus', 'title': '(Opponent team has choose <%= matcha.top_datetime.strftime("%Y-%b-%d %I:%M %P") %>, match time will be confirmed if you choose the same time as your opponent)', 'placement': 'left'});
+            $("input[name='datetime']").tooltip({'trigger':'focus', 'title': '(Opponent team has choose <%= matcha.top_datetime.strftime("%Y-%b-%d %I:%M %P") %>, match time will be confirmed if you choose the same time as your opponent)', 'placement': 'right'});
           });
         </script>
         <% end %>

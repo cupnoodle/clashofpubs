@@ -1,0 +1,18 @@
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2> Winner </h2>
+        <br>
+        <h2> Current winner is <%= @winner.team_name unless @winner.nil? %> </h2>
+        <%= form_tag({:action => "update_winner"}) do |f| %>
+            <div class="form-group">
+              <label for="winner_id">Team</label>
+              <%= select_tag(:winner_id, options_for_select(@team_select_array)) %>
+            </div>
+
+             <%= submit_tag "Update", class: "btn btn-default" ,  :onclick => "return confirm('Confirm update?')"  %> <br><br> 
+          <% end %>
+
+      </div>
+    </div>
+  </div>
