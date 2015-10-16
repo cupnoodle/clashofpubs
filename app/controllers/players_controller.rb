@@ -130,16 +130,35 @@ class PlayersController < ApplicationController
   end
 
   def send_register_email
-    RestClient.post "https://api:key-4acf342ece92e2a9f1240f06df432c0f"\
-    "@api.mailgun.net/v3/sandbox89c5c212672b432786bd76744dc11c81.mailgun.org/messages",
-    :from => "Clash Of Pubs Mailbot <mailbot@clashofpubs.com>",
-    :to => "#{params[:player][:name]} <#{params[:player][:email]}>",
-    :subject => "Hello #{params[:player][:name]}",
-    :text => "Hi #{params[:player][:name]} , Thank you for your participation in Clash of Pubs! Your registration details are shown below : " + 
+    #RestClient.post "https://api:key-4acf342ece92e2a9f1240f06df432c0f"\
+    #"@api.mailgun.net/v3/sandbox89c5c212672b432786bd76744dc11c81.mailgun.org/messages",
+    #:from => "Clash Of Pubs Mailbot <mailbot@clashofpubs.com>",
+    #:to => "#{params[:player][:name]} <#{params[:player][:email]}>",
+    #:subject => "Hello #{params[:player][:name]}",
+    #:text => "Hi #{params[:player][:name]} , Thank you for your participation in Clash of Pubs! Your registration details are shown below : " + 
+    #"\n\n Player Name : #{params[:player][:name]} \n" + " Steam_ID : #{params[:player][:steam_id]} \n" + " Team Name : #{params[:player][:team_name]} \n" + 
+    #" MMR : #{params[:player][:mmr]} \n" + " Password : #{params[:player][:password]} \n\n " + 
+    #" Please keep this email as your password will be encrypted in our server and might not be retrieved in case you forgot it in the future. \n\n" +
+    #" Please do not reply to this email, this email is sent by a mail bot from Clash Of Pubs."
+
+    content = "Hi #{params[:player][:name]} , Thank you for your participation in Clash of Pubs! Your registration details are shown below : " + 
     "\n\n Player Name : #{params[:player][:name]} \n" + " Steam_ID : #{params[:player][:steam_id]} \n" + " Team Name : #{params[:player][:team_name]} \n" + 
     " MMR : #{params[:player][:mmr]} \n" + " Password : #{params[:player][:password]} \n\n " + 
     " Please keep this email as your password will be encrypted in our server and might not be retrieved in case you forgot it in the future. \n\n" +
     " Please do not reply to this email, this email is sent by a mail bot from Clash Of Pubs."
+
+    # First, instantiate the Mailgun Client with your API key
+    mg_client = Mailgun::Client.new ENV["MAILGUN_API_KEY"]
+    
+    # Define your message parameters
+    message_params = {:from    => ENV["MAILGUN_SENDER"],
+                      :to      => params[:player][:email],
+                      :subject => "Hello #{params[:player][:name]}",
+                      :text    => content}
+    
+    # Send your message through the client
+    mg_client.send_message ENV["MAILGUN_DOMAIN"], message_params
+
   end
 
   def set_selected_menu

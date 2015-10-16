@@ -91,13 +91,18 @@ class MatchingsController < ApplicationController
     end
 
     player = Player.find(session[:player_id])
+    opponent_player = nil
 
     #check the player is belong to top or bottom
     #then assign match time with respect to player position
+    #and find the opponent team 
+
     if match.top_player_id == session[:player_id]
       match.top_datetime = input_datetime
+      opponent_player = Player.where(:id => match.bottom_player_id).first
     elsif match.bottom_player_id == session[:player_id]
       match.bottom_datetime = input_datetime
+      opponent_player = Player.where(:id => match.top_player_id).first
     else
       flash[:notice] = "Invalid player for the match"
       redirect_to(:action => "schedule")
@@ -111,8 +116,29 @@ class MatchingsController < ApplicationController
       match.agreed_datetime = match.bottom_datetime
       match.save
       flash[:notice] = "Match time has been confirmed and finalized at " + match.bottom_datetime.strftime("%Y-%m-%d %H:%M %P")
+      #if opponent player/team is found
+      if opponent_player
+        mail_title = "Time confirmed for an upcoming tournament match"
+        mail_body = "Hi " + opponent_player.team_name + ", \n\n" + "You and your opponent (" + player.team_name + ") has confirmed the upcoming match time at " + 
+                    input_datetime.strftime("%l.%M %P (%A),  %-d %B %Y") + " Pacific Standard Time (UTC -8). \n " +  
+                    " \n\n  Please do not reply to this email, this email is sent by a mail bot from Clash Of Pubs."
+        #send confirmation to both party
+        send_mail_to_opponent(mail_title, mail_body, opponent_player.email)
+        send_mail_to_opponent(mail_title, mail_body, player.email)
+      end
     else
+      #if haven't confirm match time
       flash[:notice] = "Match time has been successfully set, pending for opponent"
+      #if opponent player/team is found
+      if opponent_player
+        mail_title = "Your opponent has set a time for an upcoming tournament match"
+        mail_body = "Hi " + opponent_player.team_name + ", \n\n" + "Your opponent (" + player.team_name + ") has set the upcoming match time at " + 
+                    input_datetime.strftime("%l.%M %P (%A),  %-d %B %Y") + " Pacific Standard Time (UTC -8). \n\n Please login and select the same time slot " + 
+                    "if you agree to play at the proposed time by your opponent, you may select other time slot if the proposed time is not convenient for you." + 
+                    "\n\n" + "You can login at http://www.clashofpubs.com ." + " \n\n  Please do not reply to this email, this email is sent by a mail bot from Clash Of Pubs."
+        send_mail_to_opponent(mail_title, mail_body, opponent_player.email)
+      end
+
     end
     redirect_to(:action => "schedule")
 
@@ -137,4 +163,17 @@ class MatchingsController < ApplicationController
 
   end
 
+  def send_mail_to_opponent (title, content, opponent_email)
+    # First, instantiate the Mailgun Client with your API key
+    mg_client = Mailgun::Client.new ENV["MAILGUN_API_KEY"]
+    
+    # Define your message parameters
+    message_params = {:from    => ENV["MAILGUN_SENDER"],
+                      :to      => opponent_email,
+                      :subject => title,
+                      :text    => content}
+    
+    # Send your message through the client
+    mg_client.send_message ENV["MAILGUN_DOMAIN"], message_params
+  end
 end

@@ -34,8 +34,11 @@ gem 'rest-client'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
-#Use pluck to hash to convert pluck array to hash
+# Use pluck to hash to convert pluck array to hash
 gem 'pluck_to_hash'
+
+# Use mailgun ruby gem to send email
+gem 'mailgun-ruby', '~>1.0.3', require: 'mailgun'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
