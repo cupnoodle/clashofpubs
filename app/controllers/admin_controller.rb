@@ -195,6 +195,60 @@ class AdminController < ApplicationController
 
   end
 
+  def team
+    @is_team_page = 'class=current_page_item'
+
+    #option for team select
+    @team_select_array = Player.order(:team_name).pluck(:team_name, :id)
+    #insert blank option to the first index
+    #@team_select_array.insert(0, ["" , ""])
+
+  end
+
+  def delete_team
+    #if no these input parameter return false
+    if !params.has_key?(:team_id)
+      flash[:notice] = "Insufficient parameters input (team_id)"
+      redirect_to(:action => "team")
+      return
+    end
+
+    delete_team = Player.where(:id => params[:team_id].to_i).first
+
+    #if team not found
+    if !delete_team
+      flash[:notice] = "Can't find the specified team"
+      redirect_to(:action => "team")
+      return
+    end
+
+    #delete team and set related match time to null
+    team_name = delete_team.team_name
+    related_top_matches = Matching.where(:top_player_id => delete_team.id)
+    related_bottom_matches = Matching.where(:bottom_player_id => delete_team.id)
+
+    if !related_top_matches.blank?
+      related_top_matches.each do |top_match|
+        top_match.top_datetime = nil
+        top_match.agreed_datetime = nil
+        top_match.save
+      end
+    end
+
+    if !related_bottom_matches.blank?
+      related_bottom_matches.each do |bottom_match|
+        bottom_match.bottom_datetime = nil
+        bottom_match.agreed_datetime = nil
+        bottom_match.save
+      end
+    end
+
+    delete_team.destroy
+
+    flash[:notice] = "Team " + team_name + " has been deleted"
+    redirect_to(:action => "team")
+
+  end
 
   def login
     #doesnt render the admin layout

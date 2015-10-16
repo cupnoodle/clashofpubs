@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   post 'admin/schedule' => 'admin#update_match'
   get 'admin/winner' => 'admin#winner'
   post 'admin/winner' => 'admin#update_winner'
+  get 'admin/team' => 'admin#team'
+  delete 'admin/team' => 'admin#delete_team'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

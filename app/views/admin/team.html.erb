@@ -1,0 +1,25 @@
+  <div class="container">
+    <% if !flash[:notice].blank? %>
+      <!-- blank => nil? || empty?-->
+      <div class="notice_box">
+        <%= raw(flash[:notice]) %>
+      </div>
+    <% end %>
+    <br><br>
+    <div class="row">
+      <div class="col-md-12">
+        <h2> Team </h2>
+        <br>
+        <h2> Delete team </h2>
+        <%= form_tag({:action => "delete_team"}, :method => :delete) do |f| %>
+            <div class="form-group">
+              <label for="team_id">Team</label>
+              <%= select_tag(:team_id, options_for_select(@team_select_array)) %>
+            </div>
+
+             <%= submit_tag "Delete", class: "btn btn-default" ,  :onclick => "return confirm('Confirm delete this team? All the related match will be deleted.')"  %> <br><br> 
+          <% end %>
+
+      </div>
+    </div>
+  </div>

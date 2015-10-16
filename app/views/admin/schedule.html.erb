@@ -20,6 +20,13 @@
 
 
   <div class="container">
+    <% if !flash[:notice].blank? %>
+      <!-- blank => nil? || empty?-->
+      <div class="notice_box">
+        <%= raw(flash[:notice]) %>
+      </div>
+    <% end %>
+    <br><br>
     <div class="row">
       <div class="col-md-12">
         <h2 style="color:#EEE;"> The timezone used is PST (UTC -8) </h2>

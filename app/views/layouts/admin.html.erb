@@ -28,6 +28,7 @@
         <div class="nav-wrap">
           <ul class="group" id="navigation">
             <li <%= @is_index_page %> ><%= link_to "HOME", :controller => :admin, :action => :index %></li>
+            <li <%= @is_team_page %> ><%= link_to "TEAM", :action => :team %></li>
             <li <%= @is_schedule_page %> ><%= link_to "SCHEDULE", :action => :schedule %></li>
             <li <%= @is_winner_page %> ><%= link_to "WINNER", :action => :winner %></li>
             <li><%= link_to "LOGOUT", :action => :logout %></li>
