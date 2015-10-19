@@ -119,7 +119,7 @@ class MatchingsController < ApplicationController
       #if opponent player/team is found
       if opponent_player
         mail_title = "Time confirmed for an upcoming tournament match"
-        mail_body = "Hi " + opponent_player.team_name + ", \n\n" + "You and your opponent (" + player.team_name + ") has confirmed the upcoming match time at " + 
+        mail_body = "Hi " + player.team_name + ", \n\n" + "You and your opponent team(" + opponent_player.team_name + ") has confirmed the upcoming match time at " + 
                     input_datetime.strftime("%l.%M %P (%A),  %-d %B %Y") + " Pacific Standard Time (UTC -8). \n " +  
                     " \n\n  Please do not reply to this email, this email is sent by a mail bot from Clash Of Pubs."
         #send confirmation to both party
@@ -132,7 +132,7 @@ class MatchingsController < ApplicationController
       #if opponent player/team is found
       if opponent_player
         mail_title = "Your opponent has set a time for an upcoming tournament match"
-        mail_body = "Hi " + opponent_player.team_name + ", \n\n" + "Your opponent (" + player.team_name + ") has set the upcoming match time at " + 
+        mail_body = "Hi " + opponent_player.team_name + ", \n\n" + "Your opponent team (" + player.team_name + " , Steam ID : " + player.steam_id + " ) has set the upcoming match time at " + 
                     input_datetime.strftime("%l.%M %P (%A),  %-d %B %Y") + " Pacific Standard Time (UTC -8). \n\n Please login and select the same time slot " + 
                     "if you agree to play at the proposed time by your opponent, you may select other time slot if the proposed time is not convenient for you." + 
                     "\n\n" + "You can login at http://www.clashofpubs.com ." + " \n\n  Please do not reply to this email, this email is sent by a mail bot from Clash Of Pubs."

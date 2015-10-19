@@ -198,8 +198,12 @@ class AdminController < ApplicationController
   def team
     @is_team_page = 'class=current_page_item'
 
-    #option for team select
+    #option for team select (for delete purpose)
     @team_select_array = Player.order(:team_name).pluck(:team_name, :id)
+
+    #contain full team information
+    @team_full_array = Player.order(:team_name).pluck_to_hash(:name, :team_name, :steam_id, :email, :mmr, :id)
+
     #insert blank option to the first index
     #@team_select_array.insert(0, ["" , ""])
 
@@ -242,6 +246,15 @@ class AdminController < ApplicationController
         bottom_match.save
       end
     end
+
+    #send email to the team to notify that the team has been deleted
+    mail_title = "Your team has been removed from the tournament"
+    mail_body = "Hi " + delete_team.team_name + ", \n\n" + 
+                "We are sorry to inform you that your team has been removed from the tournament because we have found that you violated the tournament rules. \n\n " +
+                "Please contact the administrator if you have any question regarding this decision. " + 
+                " \n\n  Please do not reply to this email, this email is sent by a mail bot from Clash Of Pubs."
+
+    send_mail_to_opponent(mail_title, mail_body, delete_team.email)
 
     delete_team.destroy
 
@@ -299,4 +312,19 @@ class AdminController < ApplicationController
     end
 
   end
+
+  def send_mail_to_opponent (title, content, opponent_email)
+    # First, instantiate the Mailgun Client with your API key
+    mg_client = Mailgun::Client.new ENV["MAILGUN_API_KEY"]
+    
+    # Define your message parameters
+    message_params = {:from    => ENV["MAILGUN_SENDER"],
+                      :to      => opponent_email,
+                      :subject => title,
+                      :text    => content}
+    
+    # Send your message through the client
+    mg_client.send_message ENV["MAILGUN_DOMAIN"], message_params
+  end
+
 end
