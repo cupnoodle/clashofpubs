@@ -14,4 +14,6 @@
 
 # Ignore application configuration
 /config/application.yml
+/config/application_backup.yml
 config/application.yml
+config/application_backup.yml
